@@ -4,14 +4,14 @@ Gets the right IPC path
 @module getIpcPath
 */
 
-var fs = require("fs");
+import fs from "fs";
+import p from 'path';
 
-module.exports = function() {
-    var p = require('path');
-    var path = process.env.HOME;
+export default function() {
+    let path = process.env.HOME;
 
-    var macDefaultDir = "/Library/Ethereum/geth.ipc";
-    var linuxDefaultDir = "/.ethereum/geth.ipc";
+    const macDefaultDir = "/Library/Ethereum/geth.ipc";
+    const linuxDefaultDir = "/.ethereum/geth.ipc";
 
     if(process.platform === 'darwin') {
         if(fs.existsSync(path + macDefaultDir))

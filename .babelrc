@@ -1,5 +1,19 @@
 {
-  "presets": ["es2015"],
-  "plugins": ["add-module-exports"],
+  "presets": [
+    "es2015"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-async-to-generator",
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ]
+  ],
   "compact": false
 }

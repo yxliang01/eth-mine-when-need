@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-var _web = require('web3');
-
-var _web2 = _interopRequireDefault(_web);
-
 var _index = require('./index.js');
 
 var lib = _interopRequireWildcard(_index);
@@ -17,21 +13,30 @@ var _ethereumGoIpc = require('ethereum-go-ipc');
 
 var eth = _interopRequireWildcard(_ethereumGoIpc);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _defined = require('defined');
+
+var _defined2 = _interopRequireDefault(_defined);
+
+var _getIpcPath = require('./getIpcPath.js');
+
+var _getIpcPath2 = _interopRequireDefault(_getIpcPath);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-if (!(process.argv.length - 2 >= 1)) {
-    console.log('Usage: <Web3 RPC Address> [number of blocks for confirmation] [number of mining thread]');
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+if (process.argv.slice(2).includes('--help')) {
+    console.log('Usage: [number of blocks for confirmation] [number of mining thread] [Eth IPC Path]');
+    console.log('If you leave Eth IPC Path blank, it will use the default IPC address for your system');
     process.exit(1);
 }
 
-var web3RPC = process.argv[2];
 var txConfirmation = typeof process.argv[3] !== 'undefined' ? parseInt(process.argv[3]) : undefined;
 var mineCores = typeof process.argv[4] !== 'undefined' ? parseInt(process.argv[4]) : undefined;
+var ipcAddress = (0, _defined2.default)(process.argv[5], (0, _getIpcPath2.default)());
 
-var web3 = new _web2.default(new _web2.default.providers.HttpProvider(web3RPC));
-eth.setGethSocket(require('./getipcPath.js')());
+eth.setGethSocket(ipcAddress);
+var web3 = eth.web3Provider();
 new lib.mine_when_need(eth, web3, txConfirmation, mineCores);
 
 console.log(_chalk2.default.green('Start succeeded. Press Control+C to stop'));

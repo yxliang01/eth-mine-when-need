@@ -1,22 +1,17 @@
 "use strict";
 
-/**
-Gets the right IPC path
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-@module getIpcPath
-*/
-
-var fs = require("fs");
-
-module.exports = function () {
-    var p = require('path');
+exports.default = function () {
     var path = process.env.HOME;
 
     var macDefaultDir = "/Library/Ethereum/geth.ipc";
     var linuxDefaultDir = "/.ethereum/geth.ipc";
 
     if (process.platform === 'darwin') {
-        if (fs.existsSync(path + macDefaultDir)) path += macDefaultDir;else if (fs.existsSync(path + linuxDefaultDir)) path += linuxDefaultDir;else path += macDefaultDir;
+        if (_fs2.default.existsSync(path + macDefaultDir)) path += macDefaultDir;else if (_fs2.default.existsSync(path + linuxDefaultDir)) path += linuxDefaultDir;else path += macDefaultDir;
     }
 
     if (process.platform === 'freebsd' || process.platform === 'linux' || process.platform === 'sunos') path += linuxDefaultDir;
@@ -25,4 +20,20 @@ module.exports = function () {
 
     return path;
 };
+
+var _fs = require("fs");
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = require("path");
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+; /**
+  Gets the right IPC path
+  
+  @module getIpcPath
+  */
 //# sourceMappingURL=getIpcPath.js.map
