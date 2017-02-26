@@ -1,0 +1,17 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  eslint:
+    enabled: true
+    exclude_fingerprints:
+    - 57ac0694c78d2f49a8a09809abb4e467
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.js"
+exclude_paths: ["dist"]
