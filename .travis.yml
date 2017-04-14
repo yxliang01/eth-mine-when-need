@@ -1,11 +1,10 @@
 language: node_js
 node_js:
+  - "7"
   - "6"
   - "5"
   - "4"
   - "iojs"
   - "node"
-cache:
-  yarn: true
 notifications:
   email: true
