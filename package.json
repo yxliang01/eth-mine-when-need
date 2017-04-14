@@ -21,7 +21,7 @@
     "build": "babel src --out-dir dist",
     "build-publish": "babel src --out-dir dist --minified --compact true --no-comments",
     "publish-please": "publish-please",
-    "prepublish": "publish-please guard",
+    "prepublishOnly": "publish-please guard",
     "prepull": "rimraf dist",
     "postpull": "npm run build",
     "postpublish": "git push --tags"
