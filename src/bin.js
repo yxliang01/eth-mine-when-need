@@ -12,8 +12,8 @@ if (process.argv.slice(2).includes('--help')) {
     process.exit(1);
 }
 
-const txConfirmation = typeof process.argv[2] !== 'undefined' ? parseInt(process.argv[3]) : undefined;
-const mineCores = typeof process.argv[3] !== 'undefined' ? parseInt(process.argv[4]) : undefined;
+const txConfirmation = typeof process.argv[2] !== 'undefined' ? parseInt(process.argv[2]) : undefined;
+const mineCores = typeof process.argv[3] !== 'undefined' ? parseInt(process.argv[3]) : undefined;
 const ipcAddress = defined(process.argv[4], getDefaultIPCPath());
 
 eth.setGethSocket(ipcAddress);
