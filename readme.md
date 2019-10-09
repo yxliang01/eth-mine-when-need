@@ -3,6 +3,10 @@
 [![Code Climate](https://codeclimate.com/github/yxliang01/eth-mine-when-need/badges/gpa.svg)](https://codeclimate.com/github/yxliang01/eth-mine-when-need)
 [![npm version](https://badge.fury.io/js/eth-mine-when-need.svg)](https://badge.fury.io/js/eth-mine-when-need)
 
+#eth-mine-when-need
+
+*Automatically mine Ether only when it's needed.*
+
 This will start your Ethereum miner when there are transactions pending or waiting for confirmation. This would be super useful when you are using private Ethereum Blockchain to do the development - you don't have to keep mining yourself for the transactions to be effective.
 
 Installation
